@@ -4,3 +4,8 @@ CREATE TABLE libros(
     paginas INT NOT NULL
 );
 
+CREATE TABLE autores(
+    id INT PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL,
+    pais VARCHAR(30) NOT NULL
+);
