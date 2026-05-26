@@ -45,3 +45,38 @@ VALUES
 ('L002',2,2023),
 ('L003',3,2021),
 ('L004',2,2024);
+
+SELECT l.titulo,
+       a.nombre,
+       a.pais,
+       la.anio_publicacion
+FROM libros l
+INNER JOIN libro_autor la
+    ON l.codigo = la.la_libro_codigo_fk
+INNER JOIN autores a
+    ON a.id = la.la_autor_id_fk;
+
+SELECT l.titulo,
+       la.anio_publicacion
+FROM libros l
+INNER JOIN libro_autor la
+    ON l.codigo = la.la_libro_codigo_fk
+WHERE la.anio_publicacion > 2020;
+
+SELECT *
+FROM autores
+WHERE pais = 'Ecuador';
+
+SELECT l.titulo,
+       la.anio_publicacion
+FROM libros l
+INNER JOIN libro_autor la
+    ON l.codigo = la.la_libro_codigo_fk
+ORDER BY la.anio_publicacion DESC;
+
+SELECT a.nombre,
+       COUNT(la.la_libro_codigo_fk) AS cantidad_libros
+FROM autores a
+INNER JOIN libro_autor la
+    ON a.id = la.la_autor_id_fk
+GROUP BY a.nombre;
